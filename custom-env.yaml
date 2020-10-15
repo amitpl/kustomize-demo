@@ -9,8 +9,8 @@ spec:
         - name: "demo-service"
           env:
             - name: "SERVICE_NAME"
-              value: "Custom-RED"
+              value: "Custom-PURPLE"
             - name: "SERVICE_COLOR"
-              value: "RED"
+              value: "PURPLE"
 
 
