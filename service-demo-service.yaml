@@ -1,0 +1,20 @@
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  annotations: {}
+  name: "demo-service"
+  labels:
+    nirmata.io/component: "demo-service"
+spec:
+  externalIPs: []
+  healthCheckNodePort: 0
+  loadBalancerSourceRanges: []
+  type: "ClusterIP"
+  selector:
+    nirmata.io/component: "demo-service"
+  ports:
+  - name: "http"
+    port: 8080
+    protocol: "TCP"
+    targetPort: 8080

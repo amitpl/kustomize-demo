@@ -1,0 +1,43 @@
+---
+kind: "Deployment"
+apiVersion: "apps/v1"
+metadata:
+  annotations: {}
+  name: "demo-service"
+  labels:
+    nirmata.io/component: "demo-service"
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      nirmata.io/component: "demo-service"
+    matchExpressions: []
+  strategy:
+    type: "RollingUpdate"
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      annotations: {}
+      labels:
+        nirmata.io/component: "demo-service"
+    spec:
+      terminationGracePeriodSeconds: 30
+      nodeSelector: {}
+      containers:
+      - name: "demo-service"
+        image: "nirmata/demo-java-tomcat:v1"
+        command: []
+        args: []
+        imagePullPolicy: "Always"
+        ports:
+        - name: "http"
+          containerPort: 8080
+          protocol: "TCP"
+        env:
+        - name: "SERVICE_NAME"
+          value: "demo-service"
+        - name: "SERVICE_COLOR"
+          value: "blue"
